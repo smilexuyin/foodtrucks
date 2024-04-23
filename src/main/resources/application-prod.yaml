@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://foodtrucks.cxuvoqdobozt.us-east-1.rds.amazonaws.com:3306/foodtrucks?serverTimezone=GMT%2b8
-    username: root
-    password: 2*&^wer123AsD
+    url: jdbc:mysql://xxxxxxx:3306/foodtrucks?serverTimezone=GMT%2b8
+    username: xxxxxx
+    password: xxxxxx
 
 mybatis:
   mapper-locations: mapper/*Dao.xml
