@@ -1,4 +1,7 @@
 # tip
+Swagger document online address
+* http://ec2-54-237-91-61.compute-1.amazonaws.com:8090/swagger-ui/index.html
+
 The path where the table creation script is stored
 * /resources/static/mobile_food_facility_permit.sql
 
