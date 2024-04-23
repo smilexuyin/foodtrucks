@@ -1,0 +1,13 @@
+server:
+  port: 8090
+  path: /
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://foodtrucks.cxuvoqdobozt.us-east-1.rds.amazonaws.com:3306/foodtrucks?serverTimezone=GMT%2b8
+    username: root
+    password: 2*&^wer123AsD
+
+
+mybatis:
+  mapper-locations: mapper/*Dao.xml
