@@ -1,4 +1,4 @@
-package com.mobile.foodtrucks.dto;
+package com.mobile.foodtrucks.model.dto;
 
 import lombok.Data;
 

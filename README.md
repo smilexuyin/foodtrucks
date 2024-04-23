@@ -1,3 +1,7 @@
+# tip
+The path where the table creation script is stored
+* /resources/static/mobile_food_facility_permit.sql
+
 # design
 This is a Java system that only provides web APIs. It is implemented by Springboot, Gradle, jdk17, and Mybatis.  San Francisco's food truck open dataset is located in the RDS of Amazon Cloud. Currently. three API interfaces are implemented, as follows:<br>
 
@@ -8,8 +12,6 @@ This is a Java system that only provides web APIs. It is implemented by Springbo
   parameter: "foodItem" refers to the name of the food
   
   return: list of food trucks
-  
-  test address: http://test.com
 
 * Search for nearby food trucks
 
@@ -18,9 +20,7 @@ This is a Java system that only provides web APIs. It is implemented by Springbo
   parameter: "distance" refers to the nearby range, in kilometers
   
   return: list of food trucks
-  
-  test address: http://test.com
-  
+   
 * Query details based on truck name
 
   path: /foodtruck/details/{applicant}
@@ -28,8 +28,7 @@ This is a Java system that only provides web APIs. It is implemented by Springbo
   parameter: "applicant" refers to the name of the truck
   
   return: food truck details
-  
-  test address: http://test.com
+
 # test
 Due to the simple functional scenarios, there were no test cases written or stress tests conducted, but different parameter scenarios were tested in the development and testing environments respectively
 

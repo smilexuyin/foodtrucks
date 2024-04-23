@@ -3,17 +3,17 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mobile.foodtrucks.dao.FoodtrucksDao">
 
-    <select id="findByApplicant" resultType="com.mobile.foodtrucks.entity.FoodTrucksEntity">
+    <select id="findByApplicant" resultType="com.mobile.foodtrucks.model.entity.FoodTrucksEntity">
     SELECT applicant,locationDescription,foodItems,address,facilityType,permit,status,schedule FROM mobile_food_facility_permit
     WHERE applicant = #{applicant}
     </select>
 
-    <select id="findByFoodInfo" resultType="java.lang.String">
-    SELECT distinct applicant FROM mobile_food_facility_permit WHERE foodItems like CONCAT('%',#{foodItem},'%')
+    <select id="findByFoodInfo" resultType="com.mobile.foodtrucks.model.entity.FoodTrucksEntity">
+    SELECT applicant,locationDescription,foodItems,address,facilityType,permit,status,schedule FROM mobile_food_facility_permit WHERE foodItems like CONCAT('%',#{foodItem},'%')
     </select>
 
-    <select id="findNearRange" resultType="java.lang.String" parameterType="com.mobile.foodtrucks.util.NearRange">
-    SELECT distinct applicant
+    <select id="findNearRange" resultType="com.mobile.foodtrucks.model.entity.FoodTrucksEntity" parameterType="com.mobile.foodtrucks.util.NearRange">
+    SELECT applicant,locationDescription,foodItems,address,facilityType,permit,status,schedule
     FROM mobile_food_facility_permit
     <where>
         <if test="minLongitude !=0">

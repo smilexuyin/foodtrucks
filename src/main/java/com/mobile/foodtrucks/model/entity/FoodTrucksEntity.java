@@ -1,4 +1,4 @@
-package com.mobile.foodtrucks.entity;
+package com.mobile.foodtrucks.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

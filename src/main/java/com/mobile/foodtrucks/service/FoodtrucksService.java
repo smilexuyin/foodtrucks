@@ -1,10 +1,15 @@
 package com.mobile.foodtrucks.service;
 
-import com.mobile.foodtrucks.entity.FoodTrucksEntity;
+import com.mobile.foodtrucks.model.vo.FoodTrucksVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author: yinxu
+ * @date 2024/04/23
+ * @desc Food truck services
+ */
 @Service
 public interface FoodtrucksService {
 
@@ -13,7 +18,7 @@ public interface FoodtrucksService {
      * @param foodItem
      * @return
      */
-    List<String> getFoodtrucksInfo(String foodItem);
+    List<FoodTrucksVO> getFoodtrucksInfo(String foodItem);
 
     /**
      * Search for food trucks near the given location's latitude and longitude
@@ -22,14 +27,14 @@ public interface FoodtrucksService {
      * @param distance
      * @return
      */
-    List<String> getNearFoodrucks(Double longitude,Double latitude,Double distance);
+    List<FoodTrucksVO> getNearFoodrucks(Double longitude,Double latitude,Double distance);
 
     /**
      * Query details based on truck name
      * @param applicant
      * @return
      */
-    List<FoodTrucksEntity> getDetailByApplicant(String applicant);
+    List<FoodTrucksVO> getDetailByApplicant(String applicant);
 
 }
 

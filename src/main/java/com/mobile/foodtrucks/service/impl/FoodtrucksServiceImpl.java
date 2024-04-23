@@ -1,16 +1,23 @@
 package com.mobile.foodtrucks.service.impl;
 
 import com.mobile.foodtrucks.dao.FoodtrucksDao;
-import com.mobile.foodtrucks.entity.FoodTrucksEntity;
+import com.mobile.foodtrucks.model.entity.FoodTrucksEntity;
 import com.mobile.foodtrucks.service.FoodtrucksService;
 import com.mobile.foodtrucks.util.LocationUtils;
 import com.mobile.foodtrucks.util.NearRange;
+import com.mobile.foodtrucks.model.vo.FoodTrucksVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
+/**
+ * @author: yinxu
+ * @date 2024/04/23
+ * @desc Food truck services
+ */
 @Service
 public class FoodtrucksServiceImpl implements FoodtrucksService {
 
@@ -18,36 +25,37 @@ public class FoodtrucksServiceImpl implements FoodtrucksService {
     private FoodtrucksDao foodtrucksDao;
 
     @Override
-    public List<String> getFoodtrucksInfo(String foodItem) {
-        List<String> applicantList = new ArrayList<>();
-        try {
-            applicantList = foodtrucksDao.findByFoodInfo(foodItem);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return applicantList;
+    public List<FoodTrucksVO> getFoodtrucksInfo(String foodItem) {
+        List<FoodTrucksEntity> foodTrucksEntitys=foodtrucksDao.findByFoodInfo(foodItem);
+        List<FoodTrucksVO> foodTrucksVOList = foodTrucksEntitys.stream().map(list ->{
+            FoodTrucksVO foodTrucksVO =new FoodTrucksVO();
+            BeanUtils.copyProperties(list, foodTrucksVO);
+            return foodTrucksVO;
+        }).collect(Collectors.toList());
+
+        return foodTrucksVOList;
     }
 
     @Override
-    public List<String> getNearFoodrucks(Double longitude,Double latitude,Double distance) {
+    public List<FoodTrucksVO> getNearFoodrucks(Double longitude,Double latitude,Double distance) {
         NearRange nearRange = LocationUtils.getNearbyLocation(longitude, latitude, distance);
-        List<String> applicantList = new ArrayList<>();
-        try {
-            applicantList = foodtrucksDao.findNearRange(nearRange);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return applicantList;
+        List<FoodTrucksEntity> foodTrucksEntitys=foodtrucksDao.findNearRange(nearRange);
+        List<FoodTrucksVO> foodTrucksVOList = foodTrucksEntitys.stream().map(list ->{
+            FoodTrucksVO foodTrucksVO =new FoodTrucksVO();
+            BeanUtils.copyProperties(list, foodTrucksVO);
+            return foodTrucksVO;
+        }).collect(Collectors.toList());
+        return foodTrucksVOList;
     }
 
     @Override
-    public List<FoodTrucksEntity> getDetailByApplicant(String applicant) {
-        List<FoodTrucksEntity> trucksEntityList = new ArrayList<>();
-        try {
-            trucksEntityList = foodtrucksDao.findByApplicant(applicant);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return trucksEntityList;
+    public List<FoodTrucksVO> getDetailByApplicant(String applicant) {
+        List<FoodTrucksEntity> foodTrucksEntitys=foodtrucksDao.findByApplicant(applicant);
+        List<FoodTrucksVO> foodTrucksVOList = foodTrucksEntitys.stream().map(list ->{
+            FoodTrucksVO foodTrucksVO =new FoodTrucksVO();
+            BeanUtils.copyProperties(list, foodTrucksVO);
+            return foodTrucksVO;
+        }).collect(Collectors.toList());
+        return foodTrucksVOList;
     }
 }

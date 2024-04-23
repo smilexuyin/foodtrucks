@@ -8,6 +8,11 @@ import lombok.Data;
 import java.io.Serializable;
 
 
+/**
+ * @author: yinxu
+ * @date 2024/04/23
+ * @desc api return
+ */
 @Data
 public class Result<T> implements Serializable {
     private static final long serialVersionUID = -1686054524991742104L;
